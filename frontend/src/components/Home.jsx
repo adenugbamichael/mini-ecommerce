@@ -35,11 +35,19 @@ const Home = () => {
           { id: 1, quantity: quantity, price: itemPrice, name: itemName },
         ],
       }),
-    }).then((res) => {
-      if (res.ok) return res.json()
-      return res.json().then((json) => Promise.reject(json))
     })
+      .then((res) => {
+        if (res.ok) return res.json()
+        return res.json().then((json) => Promise.reject(json))
+      })
+      .then(({ url }) => {
+        window.location = url
+      })
+      .catch((e) => {
+        console.log(e.error)
+      })
   }
+
   return (
     <div className='w-full mx-auto'>
       <div className='text-center w-full max-w-5xl mx-auto my-6'>
