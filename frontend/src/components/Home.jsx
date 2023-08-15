@@ -24,10 +24,10 @@ const Home = () => {
   }
 
   const checkout = () => {
-    fetch("backend api here", {
+    fetch("http://localhost:5000/create-checkout-session", {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       mode: "cors",
       body: JSON.stringify({
@@ -36,9 +36,10 @@ const Home = () => {
         ],
       }),
     })
-      .then((res) => {
+      .then(async (res) => {
         if (res.ok) return res.json()
-        return res.json().then((json) => Promise.reject(json))
+        const json = await res.json()
+        return await Promise.reject(json)
       })
       .then(({ url }) => {
         window.location = url
@@ -51,8 +52,8 @@ const Home = () => {
   return (
     <div className='w-full mx-auto'>
       <div className='text-center w-full max-w-5xl mx-auto my-6'>
-        <div className='font-bold futura text-transparent text-6xl my-10 text-[#442266]'>
-          Grocery
+        <div className='font-bold futura bg-clip-text  text-6xl my-10 text-[#442266]'>
+          BackStore
         </div>
         <div className='flex flex-col lg:flex-row justify-center item-center mx-auto w-full my-16 border-2 bg-[#fcf6f6] border-slate-100 shadow-md py-4 '>
           <div className='flex lg:justify-end justify-center items-center mx-auto my-24 w-full lg:w-6/12'>
@@ -63,7 +64,7 @@ const Home = () => {
               {itemName}
             </div>
             <div className='text-3xl font-medium my-6 text-slate-600'>
-              price:&nbsp;&nbsp; {itemPrice}
+              price:&nbsp;&nbsp;${itemPrice}
             </div>
 
             <small className='mt-10 mb-3 font-medium'>Add Quantity</small>
@@ -90,7 +91,7 @@ const Home = () => {
             <div className='my-6 text-xl'>
               Amount to be paid:{" "}
               <span className='text-[#442266] text-3xl font-semibold'>
-                {finalAmount}
+                ${finalAmount}
               </span>
             </div>
             <div className='my-6'>

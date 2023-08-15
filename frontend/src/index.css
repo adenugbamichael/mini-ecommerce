@@ -1,10 +1,9 @@
+@import url("https://fonts.cdnfonts.com/css/futura-pt?styles=117663,117667,117668,117664,117666,117662,117665");
+@import url("https://fonts.cdnfonts.com/css/segoe-ui-4?styles=18006,18005,18004,18003");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url("https://fonts.cdnfonts.com/css/futura-pt?styles=117663,117667,117668,117664,117666,117662,117665");
-
-@import url("https://fonts.cdnfonts.com/css/segoe-ui-4?styles=18006,18005,18004,18003");
 
 body {
   font-family: "Segoe UI", sans-serif;
